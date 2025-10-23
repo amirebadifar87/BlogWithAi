@@ -20,6 +20,16 @@
 
 </div>
 
+## 📖 Overview | نمای کلی
+
+<div dir="rtl">
+
+**BlogWithAi** یک پلتفرم وبلاگ نویسی مدرن و مقیاس‌پذیر است که با کمک هوش مصنوعی ساخته شده است. این پروژه با استفاده از فناوری‌های پیشرفته .NET و ASP.NET Core طراحی شده و هدف آن ارائه یک سیستم مدیریت محتوای قدرتمند برای وبلاگ نویسی است.
+
+</div>
+
+**BlogWithAi** is a modern, scalable blogging platform built with AI assistance. Developed using cutting-edge .NET and ASP.NET Core technologies, it aims to provide a powerful content management system for blogging.
+
 ---
 
 ## ✨ Features | امکانات
