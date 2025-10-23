@@ -1,0 +1,50 @@
+@model IEnumerable<BlogWithAi.Application.DTOs.PostDto>
+@{
+    var category = ViewBag.Category as BlogWithAi.Application.DTOs.CategoryDto;
+    ViewData["Title"] = category?.Name ?? "Category";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="my-4">@category?.Name</h1>
+            @if (!string.IsNullOrEmpty(category?.Description))
+            {
+                <p class="lead">@category.Description</p>
+            }
+        </div>
+    </div>
+
+    @if (Model.Any())
+    {
+        <div class="row">
+            @foreach (var post in Model)
+            {
+                <div class="col-md-6 mb-4">
+                    <div class="card">
+                        @if (!string.IsNullOrEmpty(post.FeaturedImage))
+                        {
+                            <img class="card-img-top" src="@post.FeaturedImage" alt="@post.Title">
+                        }
+                        <div class="card-body">
+                            <h5 class="card-title">@post.Title</h5>
+                            <p class="card-text">@post.Excerpt</p>
+                            <small class="text-muted">
+                                By @post.Author.Name on @post.PublishedAt?.ToString("MMM dd, yyyy")
+                            </small>
+                        </div>
+                        <div class="card-footer">
+                            <a href="@Url.Action("Post", "Blog", new { slug = post.Slug })" class="btn btn-primary btn-sm">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-info">
+            <p>No posts in this category yet.</p>
+        </div>
+    }
+</div>
