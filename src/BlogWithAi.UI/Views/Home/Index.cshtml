@@ -1,0 +1,59 @@
+﻿@model IEnumerable<BlogWithAi.Application.DTOs.PostDto>
+@{
+    ViewData["Title"] = "Blog Home";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="my-4">Latest Blog Posts</h1>
+        </div>
+    </div>
+
+    @if (Model.Any())
+    {
+        <div class="row">
+            @foreach (var post in Model)
+            {
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        @if (!string.IsNullOrEmpty(post.FeaturedImage))
+                        {
+                            <img class="card-img-top" src="@post.FeaturedImage" alt="@post.Title">
+                        }
+                        <div class="card-body">
+                            <h5 class="card-title">@post.Title</h5>
+                            <p class="card-text">@post.Excerpt</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <small class="text-muted">
+                                    By @post.Author.Name
+                                </small>
+                                <small class="text-muted">
+                                    @post.PublishedAt?.ToString("MMM dd, yyyy")
+                                </small>
+                            </div>
+                            @if (post.Category != null)
+                            {
+                                <span class="badge bg-primary mt-2">@post.Category.Name</span>
+                            }
+                        </div>
+                        <div class="card-footer">
+                            <a href="@Url.Action("Post", "Blog", new { slug = post.Slug })" class="btn btn-primary btn-sm">Read More</a>
+                            <small class="text-muted float-end">
+                                <i class="bi bi-eye"></i> @post.ViewCount views
+                                <i class="bi bi-chat ms-2"></i> @post.CommentCount comments
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-info">
+            <h4>No posts available yet.</h4>
+            <p>Check back later for new content!</p>
+        </div>
+    }
+</div>
