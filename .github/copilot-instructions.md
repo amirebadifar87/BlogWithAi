@@ -214,7 +214,7 @@ Example: `feat: add user registration functionality`
 - **Problem**: Migration errors
   - **Solution**: Ensure database connection string is correct and database is accessible
   - Check for pending migrations: `dotnet ef migrations list`
-  
+
 - **Problem**: Connection timeout
   - **Solution**: Verify SQL Server is running and connection string includes proper timeout settings
 
@@ -222,14 +222,14 @@ Example: `feat: add user registration functionality`
 - **Problem**: Package restore failures
   - **Solution**: Clear NuGet cache: `dotnet nuget locals all --clear`
   - Check internet connection and NuGet sources
-  
+
 - **Problem**: Assembly conflicts
   - **Solution**: Clean and rebuild: `dotnet clean && dotnet build`
 
 ### Runtime Issues
 - **Problem**: Configuration missing
   - **Solution**: Verify appsettings.json and environment variables are properly set
-  
+
 - **Problem**: Port already in use
   - **Solution**: Change port in launchSettings.json or stop the conflicting process
 
